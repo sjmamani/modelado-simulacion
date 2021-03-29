@@ -16,7 +16,62 @@
 </head>
 
 <body>  
-    <a class="waves-effect waves-light btn">button</a>
+    
+    <!--De acuerdo a lo que se elija ocultamos o mostramos el formulario-->
+    <p>
+        <label>
+          <input class="with-gap" name="group1" type="radio"/>
+          <span>EULER</span>
+        </label>
+    </p>
+    <p>
+        <label>
+          <input class="with-gap" name="group1" type="radio"/>
+          <span>MONTE CARLO</span>
+        </label>
+    </p>
+
+    <!--Euler-->
+    <div class="input-field col s6">
+        <input id="funcion" type="text" class="validate">
+        <label for="funcion">Función</label>
+    </div>
+    <div class="input-field col s6">
+        <input id="t0" type="number" class="validate">
+        <label for="t0">Tiempo inicial</label>
+    </div>
+    <div class="input-field col s6">
+        <input id="tf" type="number" class="validate">
+        <label for="tf">Tiempo final</label>
+    </div>
+    <div class="input-field col s6">
+        <input id="x0" type="number" class="validate">
+        <label for="x0">X inicial</label>
+    </div>
+    <div class="input-field col s6">
+        <input id="n" type="number" class="validate">
+        <label for="n">Intervalos</label>
+    </div>
+
+    <!--MonteCarlo-->
+    <div class="input-field col s6">
+        <input id="funcion" type="text" class="validate">
+        <label for="funcion">Función</label>
+    </div>
+    <div class="input-field col s6">
+        <input id="a" type="number" class="validate">
+        <label for="a">A</label>
+    </div>
+    <div class="input-field col s6">
+        <input id="b" type="number" class="validate">
+        <label for="b">B</label>
+    </div>
+    <div class="input-field col s6">
+        <input id="puntos" type="number" class="validate">
+        <label for="puntos">Cantidad de puntos</label>
+    </div>
+
+    <a class="waves-effect waves-light btn">Calcular</a>
 </body> 
 
 </html> 
