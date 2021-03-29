@@ -1,0 +1,23 @@
+{
+  "name": "modelado-simulacion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjmamani/modelado-simulacion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sjmamani/modelado-simulacion/issues"
+  },
+  "homepage": "https://github.com/sjmamani/modelado-simulacion#readme",
+  "dependencies": {
+    "function-plot": "^1.22.7",
+    "mathjs": "^9.3.0"
+  }
+}
