@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
 </head>
 
-<body>
+<body onload="plot();">
     <div class="container">
         <h3 class="center-align">Modelado y Simulación</h3>
         <div class="divider"></div>
@@ -69,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="col s6">
+            <div id="eulerGraphic" class="col s6">
                 <!-- Aquí iría el gráfico -->
             </div>
         </div>
@@ -99,7 +100,7 @@
                 </div>
             </div>
 
-            <div class="col s6">
+            <div id="montecarloGraphic" class="col s6">
                 <!-- Aquí iría el gráfico -->
             </div>
         </div>
@@ -107,6 +108,7 @@
         <a class="waves-effect waves-light btn">Calcular</a>
     </div>
     <script type="text/javascript" src="main.js"></script>
+    </script>
 </body>
 
 </html>
