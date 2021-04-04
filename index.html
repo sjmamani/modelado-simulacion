@@ -7,71 +7,106 @@
     <title>Modelado y Simulación</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<body>  
-    
-    <!--De acuerdo a lo que se elija ocultamos o mostramos el formulario-->
-    <p>
-        <label>
-          <input class="with-gap" name="group1" type="radio"/>
-          <span>EULER</span>
-        </label>
-    </p>
-    <p>
-        <label>
-          <input class="with-gap" name="group1" type="radio"/>
-          <span>MONTE CARLO</span>
-        </label>
-    </p>
+<body>
+    <div class="container">
+        <h3 class="center-align">Modelado y Simulación</h3>
+        <div class="divider"></div>
+        <p>Seleccione un método:</p>
+        <!--De acuerdo a lo que se elija ocultamos o mostramos el formulario-->
+        <div class="row">
+            <div class="col s3">
+                <p>
+                    <label>
+                        <input id="euler" class="with-gap" name="metodos" type="radio" checked
+                            onclick="ShowHideMethod()" />
+                        <span>EULER</span>
+                    </label>
+                </p>
+            </div>
+            <div class="col s3">
+                <p>
+                    <label>
+                        <input id="montecarlo" class="with-gap" name="metodos" type="radio"
+                            onclick="ShowHideMethod()" />
+                        <span>MONTE CARLO</span>
+                    </label>
+                </p>
+            </div>
+        </div>
 
-    <!--Euler-->
-    <div class="input-field col s6">
-        <input id="funcion" type="text" class="validate">
-        <label for="funcion">Función</label>
-    </div>
-    <div class="input-field col s6">
-        <input id="t0" type="number" class="validate">
-        <label for="t0">Tiempo inicial</label>
-    </div>
-    <div class="input-field col s6">
-        <input id="tf" type="number" class="validate">
-        <label for="tf">Tiempo final</label>
-    </div>
-    <div class="input-field col s6">
-        <input id="x0" type="number" class="validate">
-        <label for="x0">X inicial</label>
-    </div>
-    <div class="input-field col s6">
-        <input id="n" type="number" class="validate">
-        <label for="n">Intervalos</label>
-    </div>
+        <!--Euler-->
+        <div id="eulerContent" class="row">
+            <div class="col s6">
+                <div class="input-field">
+                    <input id="funcion" type="text" class="validate">
+                    <label for="funcion">Función</label>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="t0" type="number" class="validate">
+                        <label for="t0">Tiempo inicial</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="tf" type="number" class="validate">
+                        <label for="tf">Tiempo final</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="x0" type="number" class="validate">
+                        <label for="x0">X inicial</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="n" type="number" class="validate">
+                        <label for="n">Intervalos</label>
+                    </div>
+                </div>
+            </div>
 
-    <!--MonteCarlo-->
-    <div class="input-field col s6">
-        <input id="funcion" type="text" class="validate">
-        <label for="funcion">Función</label>
-    </div>
-    <div class="input-field col s6">
-        <input id="a" type="number" class="validate">
-        <label for="a">A</label>
-    </div>
-    <div class="input-field col s6">
-        <input id="b" type="number" class="validate">
-        <label for="b">B</label>
-    </div>
-    <div class="input-field col s6">
-        <input id="puntos" type="number" class="validate">
-        <label for="puntos">Cantidad de puntos</label>
-    </div>
+            <div class="col s6">
+                <!-- Aquí iría el gráfico -->
+            </div>
+        </div>
 
-    <a class="waves-effect waves-light btn">Calcular</a>
-</body> 
+        <!--MonteCarlo-->
+        <div id="montecarloContent" class="row hide">
+            <div class="col s6">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="funcion" type="text" class="validate">
+                        <label for="funcion">Función</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="puntos" type="number" class="validate">
+                        <label for="puntos">Cantidad de puntos</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="a" type="number" class="validate">
+                        <label for="a">A</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="b" type="number" class="validate">
+                        <label for="b">B</label>
+                    </div>
+                </div>
+            </div>
 
-</html> 
+            <div class="col s6">
+                <!-- Aquí iría el gráfico -->
+            </div>
+        </div>
+
+        <a class="waves-effect waves-light btn">Calcular</a>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
