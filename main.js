@@ -32,3 +32,17 @@ function plot(target = "#eulerGraphic") {
 		],
 	});
 }
+
+function calcularEuler () {
+	const eulerFunction = document.getElementById ('funcion_euler').value;
+	const tiempoIni = document.getElementById('ti').value;
+	const tiempoFin = document.getElementById('tf').value;
+	const xIni = document.getElementById('xi').value;
+	const intervalos = document.getElementById('intervalos').value;
+	const puntos = euler(eulerFunction, tiempoIni, tiempoFin, xIni, intervalos);
+	plot('#eulerGraphic', eulerFunction, tiempoIni, tiempoFin, xIni, intervalos);                              
+}
+
+function euler () {
+	
+}
