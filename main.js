@@ -1,4 +1,3 @@
-
 function ShowHideMethod() {
     var eulerDiv = document.getElementById('eulerContent');
 	var montecarloDiv = document.getElementById('montecarloContent');
@@ -14,7 +13,7 @@ function ShowHideMethod() {
 	}
 }
 
-function plot(target = "#eulerGraphic") {
+function plot(target = "#eulerGraphic", eulerFunction, tiempoIni, tiempoFin, xIni, intervalos) {
 	functionPlot({
 		target: target,
 		// width: 100,
@@ -23,11 +22,9 @@ function plot(target = "#eulerGraphic") {
 		grid: true,
 		data: [
 			{
-				fn: 'x^2',
-				derivative: {
-					fn: '2 * x',
-					updateOnMouseMove: true,
-				},
+				fn: eulerFunction,
+				range: [tiempoIni, tiempoFin],
+
 			},
 		],
 	});
@@ -43,6 +40,36 @@ function calcularEuler () {
 	plot('#eulerGraphic', eulerFunction, tiempoIni, tiempoFin, xIni, intervalos);                              
 }
 
-function euler () {
-	
+function euler (eulerFunction, tiempoIni, tiempoFin, xIni, intervalos) {
+	var h = (tiempoFin - tiempoIni)/intervalos;
+	var valores = [];
+        var x = xIni;
+        var t = tiempoIni;
+        valores.push({ t : t, x : x });
+        while (t < tiempoFin) {
+            x = x + h * evaluar(x, t, eulerFunction);
+            t = t + h;
+        valores.push({ t : t, x : x });
+        }
+        return valores;
+}
+
+function  evaluar(x, t, eulerFunction) {
+        
+	while(eulerFunction.includes("sin")){
+		let sin = eulerFunction.match(/sin\((.)\)/)[1] === "t" ? Math.sin(t) : Math.sin(x);
+		let variable = eulerFunction.match(/sin\((.)\)/)[1];
+		eulerFunction = eulerFunction.replace("sin("+variable+")",sin);
+	}
+	while(eulerFunction.includes("cos")){
+		let cos = eulerFunction.match(/cos\((.)\)/)[1] === "t" ? Math.cos(t) : Math.cos(x);
+		let variable = eulerFunction.match(/cos\((.)\)/)[1];
+		eulerFunction = eulerFunction.replace("cos("+variable+")",cos);
+	}
+	while(eulerFunction.includes("sqrt")){
+		let sqrt = eulerFunction.match(/sqrt\((.)\)/)[1] === "t" ? Math.sqrt(t) : Math.sqrt(x);
+		let variable = eulerFunction.match(/sqrt\((.)\)/)[1];
+		eulerFunction = eulerFunction.replace("sqrt("+variable+")",sqrt);
+	}
+	return eval(eulerFunction);
 }

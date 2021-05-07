@@ -12,6 +12,8 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
+    <!-- Math.js file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.0/math.js"></script>
 </head>
 
 <body onload="plot();">
@@ -45,26 +47,26 @@
         <div id="eulerContent" class="row">
             <div class="col s6">
                 <div class="input-field">
-                    <input id="funcion_euler" type="text" class="validate">
+                    <input id="funcion_euler" type="text" class="validate" value="x^2">
                     <label for="funcion_euler">Función</label>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="ti" type="number" class="validate">
+                        <input id="ti" type="number" class="validate" value="0">
                         <label for="ti">Tiempo inicial</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="tf" type="number" class="validate">
+                        <input id="tf" type="number" class="validate" value="10">
                         <label for="tf">Tiempo final</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="xi" type="number" class="validate">
+                        <input id="xi" type="number" class="validate" value="3">
                         <label for="xi">X inicial</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="intervalos" type="number" class="validate">
+                        <input id="intervalos" type="number" class="validate" value="5">
                         <label for="intervalos">Intervalos</label>
                     </div>
                 </div>
@@ -105,7 +107,7 @@
             </div>
         </div>
 
-        <button class="waves-effect waves-light btn" onclick="calcular()">Calcular</button>
+        <button class="waves-effect waves-light btn" onclick="calcularEuler()">Calcular</button>
     </div>
     <script type="text/javascript" src="main.js"></script>
     </script>
