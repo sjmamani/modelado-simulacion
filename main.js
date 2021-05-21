@@ -26,12 +26,13 @@ function calcularMontecarlo() {
 	var montecarloFunction = document.getElementById('funcion_montecarlo').value;
 	var puntoInicial = document.getElementById('punto_inicial').value;
 	var puntoFinal = document.getElementById('punto_final').value;
+	var disparos = document.getElementById('disparos').value;
 	const { puntos, area } = montecarlo(
 		puntoInicial,
 		puntoFinal,
 		montecarloFunction,
 		1.1,
-		3000
+		disparos
 	);
 	const puntosColores = [
 		{
@@ -48,7 +49,7 @@ function calcularMontecarlo() {
 		montecarloFunction,
 		puntoInicial,
 		puntoFinal,
-		'blue'
+		'#26A69A20'
 	);
 	const otherData = {
 		fn: montecarloFunction,
@@ -69,11 +70,9 @@ function calcularMontecarlo() {
 	};
 	functionPlot(Object.assign({}, options));
 
-	var element = document.getElementById('resultadoMontecarlo');
-	var tag = document.createElement('p');
-	var text = document.createTextNode(area.toString());
-	tag.appendChild(text);
-	element.appendChild(tag);
+	var resultado = document.getElementById('resultadoMontecarlo');
+	resultado.textContent = 'Resultado: ';
+	resultado.textContent += area.toString();
 }
 
 function plot(target = '#eulerGraphic', fn = 'x^2', start = -2, end = 2) {
