@@ -11,40 +11,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <!-- Function Plot -->
     <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
-
     <!-- Math.js file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.0/math.js"></script>
 </head>
 
-<body onload="plot();">
+<body>
     <div class="container">
         <h3 class="center-align">Modelado y Simulación</h3>
         <div class="divider"></div>
         <p>Seleccione un método:</p>
         <!-- De acuerdo a lo que se elija ocultamos o mostramos el formulario -->
-        <div class="row">
+        <form class="row" name="methods">
             <div class="col s3">
-                <p>
-                    <label>
-                        <input id="euler" class="with-gap" name="metodos" type="radio" checked
-                            onclick="showHideMethod()" />
-                        <span>EULER</span>
-                    </label>
-                </p>
+                <label>
+                    <input id="euler" class="with-gap" name="methods" type="radio" checked />
+                    <span>EULER</span>
+                </label>
             </div>
             <div class="col s3">
-                <p>
-                    <label>
-                        <input id="montecarlo" class="with-gap" name="metodos" type="radio"
-                            onclick="showHideMethod()" />
-                        <span>MONTE CARLO</span>
-                    </label>
-                </p>
+                <label>
+                    <input id="montecarlo" class="with-gap" name="methods" type="radio" />
+                    <span>MONTECARLO</span>
+                </label>
             </div>
-        </div>
+        </form>
 
         <!-- Euler -->
         <div id="eulerContent" class="row">
@@ -113,7 +105,7 @@
             </div>
         </div>
 
-        <button class="waves-effect waves-light btn" onclick="calcular()">Calcular</button>
+        <button id="calculate" class="waves-effect waves-light btn">Calcular</button>
     </div>
     <script type="text/javascript" src="main.js"></script>
 </body>
