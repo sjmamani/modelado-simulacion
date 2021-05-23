@@ -5,35 +5,42 @@
 
 (function (document, window) {
 	var radios = document.forms['methods'].elements['methods'];
+	var eulerSelected = true;
 
 	for (var i = 0, max = radios.length; i < max; i++) {
 		radios[i].onclick = showHideMethod;
 	}
 
-	calculate.onclick = calcularMontecarlo;
-  calculate.onclick = calcularEuler;
+	calculate.onclick = () => {
+		if (eulerSelected) {
+			return calcularEuler();
+		} else {
+			return calcularMontecarlo();
+		}
+	};
 
 	function showHideMethod() {
-		var eulerDiv = document.getElementById('eulerContent');
-		var montecarloDiv = document.getElementById('montecarloContent');
-		var isEuler = document.getElementById('euler');
+		var eulerDiv = getById('eulerContent');
+		var montecarloDiv = getById('montecarloContent');
+		var isEuler = getById('euler');
 		if (isEuler.checked) {
 			montecarloDiv.classList.add('hide');
 			eulerDiv.classList.remove('hide');
-			// plot('#eulerGraphic');
+			eulerSelected = true;
 		} else {
 			eulerDiv.classList.add('hide');
 			montecarloDiv.classList.remove('hide');
-			// plot('#montecarloGraphic');
+			eulerSelected = false;
 		}
 	}
 
+	// MONTECARLO
 	function calcularMontecarlo() {
 		var montecarloFunction =
-			document.getElementById('funcion_montecarlo').value;
-		var puntoInicial = document.getElementById('punto_inicial').value;
-		var puntoFinal = document.getElementById('punto_final').value;
-		var disparos = document.getElementById('disparos').value;
+			getById('funcion_montecarlo').value;
+		var puntoInicial = getById('punto_inicial').value;
+		var puntoFinal = getById('punto_final').value;
+		var disparos = getById('disparos').value;
 		const { puntos, area } = montecarlo(
 			puntoInicial,
 			puntoFinal,
@@ -65,13 +72,14 @@
 		};
 		const options = {
 			target: '#montecarloGraphic',
+			xAxis: { domain: [puntoInicial, puntoFinal] },
 			yAxis: { domain: [-1, 9] },
 			grid: true,
 			data: [otherData, processedAreaFunctions, ...proccessedPoints],
 		};
 		functionPlot(Object.assign({}, options));
 
-		var resultado = document.getElementById('resultadoMontecarlo');
+		var resultado = getById('resultadoMontecarlo');
 		resultado.textContent = 'Resultado: ';
 		resultado.textContent += area.toString();
 	}
@@ -249,6 +257,7 @@
 		];
 	};
 
+	// EULER
 	function calcularEuler() {
 		var k = 0;
 		var eulerFunction = getById('funcion_euler').value;
