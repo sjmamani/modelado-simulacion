@@ -6,7 +6,6 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Modelado y Simulación</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
@@ -42,27 +41,27 @@
         <div id="eulerContent" class="row">
             <div class="col s6">
                 <div class="input-field">
-                    <input id="funcion" type="text" class="validate">
-                    <label for="funcion">Función</label>
+                    <input id="funcion_euler" type="text" class="validate" value="-y">
+                    <label for="funcion_euler">Función</label>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="t0" type="number" class="validate">
-                        <label for="t0">Tiempo inicial</label>
+                        <input id="ti" type="number" class="validate" value="0">
+                        <label for="ti">Tiempo inicial</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="tf" type="number" class="validate">
+                        <input id="tf" type="number" class="validate" value="1">
                         <label for="tf">Tiempo final</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="x0" type="number" class="validate">
-                        <label for="x0">X inicial</label>
+                        <input id="xi" type="number" class="validate" value="1">
+                        <label for="xi">X inicial</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="n" type="number" class="validate">
-                        <label for="n">Intervalos</label>
+                        <input id="intervalos" type="number" class="validate" value="5" min="1">
+                        <label for="intervalos">Intervalos</label>
                     </div>
                 </div>
             </div>

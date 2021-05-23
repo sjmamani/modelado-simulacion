@@ -11,6 +11,7 @@
 	}
 
 	calculate.onclick = calcularMontecarlo;
+  calculate.onclick = calcularEuler;
 
 	function showHideMethod() {
 		var eulerDiv = document.getElementById('eulerContent');
@@ -247,4 +248,52 @@
 			generateRandom(y.min, y.max, isInteger),
 		];
 	};
+
+	function calcularEuler() {
+		var k = 0;
+		var eulerFunction = getById('funcion_euler').value;
+		var x = Number(getById('ti').value);
+		var xf = Number(getById('tf').value);
+		var y = Number(getById('xi').value);
+		var n = Number(getById('intervalos').value);
+		var xAxis = { domain: [x - 0.1, xf + 0.1] };
+
+		var h = (xf - x) / n;
+
+		var points = [[x, y]];
+
+		for (var j = 1; j <= n; j++) {
+			x = x + h;
+			k = h * eval(eulerFunction);
+			y = y + k;
+			points.push([x, y]);
+		}
+
+		var yAxis = { domain: [points[points.length - 1][1], points[0][1]] };
+
+		functionPlot({
+			target: '#eulerGraphic',
+			grid: true,
+			yAxis,
+			xAxis,
+			data: [
+				{
+					points: points,
+					fnType: 'points',
+					graphType: 'scatter',
+					color: 'red',
+				},
+				{
+					points: points,
+					fnType: 'points',
+					graphType: 'polyline',
+					color: '#26A69A',
+				},
+			],
+		});
+	}
+
+	function getById(id) {
+		return document.getElementById(id);
+	}
 })(document, window);
