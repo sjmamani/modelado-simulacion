@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Function Plot -->
     <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
     <!-- Math.js file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.0/math.js"></script>
@@ -20,7 +21,7 @@
         <h3 class="center-align">Modelado y Simulación</h3>
         <div class="divider"></div>
         <p>Seleccione un método:</p>
-        <!--De acuerdo a lo que se elija ocultamos o mostramos el formulario-->
+        <!-- De acuerdo a lo que se elija ocultamos o mostramos el formulario -->
         <form class="row" name="methods">
             <div class="col s3">
                 <label>
@@ -36,7 +37,7 @@
             </div>
         </form>
 
-        <!--Euler-->
+        <!-- Euler -->
         <div id="eulerContent" class="row">
             <div class="col s6">
                 <div class="input-field">
@@ -70,28 +71,31 @@
             </div>
         </div>
 
-        <!--MonteCarlo-->
+        <!-- MonteCarlo -->
         <div id="montecarloContent" class="row hide">
             <div class="col s6">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="funcion" type="text" class="validate">
-                        <label for="funcion">Función</label>
+                        <input id="funcion_montecarlo" type="text" class="validate" value="3x^2">
+                        <label for="funcion_montecarlo">Función</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="puntos" type="number" class="validate">
-                        <label for="puntos">Cantidad de puntos</label>
+                        <input id="disparos" type="number" class="validate" value="10">
+                        <label for="disparos">Cantidad de puntos</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="a" type="number" class="validate">
-                        <label for="a">A</label>
+                        <input id="punto_inicial" type="number" class="validate" value="0">
+                        <label for="punto_inicial">A</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="b" type="number" class="validate">
-                        <label for="b">B</label>
+                        <input id="punto_final" type="number" class="validate" value="1">
+                        <label for="punto_final">B</label>
                     </div>
+                </div>
+                <div class="row">
+                    <p id="resultadoMontecarlo"></p>
                 </div>
             </div>
 
