@@ -265,6 +265,7 @@
 		var y = Number(getById('xi').value);
 		var n = Number(getById('intervalos').value);
 		var xAxis = { domain: [x - 0.1, xf + 0.1] };
+		var yAxis;
 
 		var h = (xf - x) / n;
 
@@ -277,7 +278,11 @@
 			points.push([x, y]);
 		}
 
-		var yAxis = { domain: [points[points.length - 1][1], points[0][1]] };
+		if (points[points.length - 1][1] < points[0][1]) {
+			yAxis = { domain: [points[points.length - 1][1], points[0][1]] };
+		} else {
+			yAxis = { domain: [points[0][1], points[points.length - 1][1],] };
+		}
 
 		functionPlot({
 			target: '#eulerGraphic',
