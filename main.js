@@ -273,7 +273,7 @@
 
 		for (var j = 1; j <= n; j++) {
 			x = x + h;
-			k = h * eval(eulerFunction);
+			k = h * evaluar(eulerFunction, x, y);
 			y = y + k;
 			points.push([x, y]);
 		}
@@ -281,7 +281,7 @@
 		if (points[points.length - 1][1] < points[0][1]) {
 			yAxis = { domain: [points[points.length - 1][1], points[0][1]] };
 		} else {
-			yAxis = { domain: [points[0][1], points[points.length - 1][1],] };
+			yAxis = { domain: [points[0][1], points[points.length - 1][1]] };
 		}
 
 		functionPlot({
@@ -304,6 +304,28 @@
 				},
 			],
 		});
+	}
+
+	function evaluar(funcion, x, y) {
+		while (funcion.includes('sin')) {
+			let sin =
+				funcion.match(/sin\((.)\)/)[1] === 'x' ? Math.sin(x) : Math.sin(y);
+			let variable = funcion.match(/sin\((.)\)/)[1];
+			funcion = funcion.replace('sin(' + variable + ')', sin);
+		}
+		while (funcion.includes('cos')) {
+			let cos =
+				funcion.match(/cos\((.)\)/)[1] === 'x' ? Math.cos(x) : Math.cos(y);
+			let variable = funcion.match(/cos\((.)\)/)[1];
+			funcion = funcion.replace('cos(' + variable + ')', cos);
+		}
+		while (funcion.includes('sqrt')) {
+			let sqrt =
+				funcion.match(/sqrt\((.)\)/)[1] === 'x' ? Math.sqrt(x) : Math.sqrt(y);
+			let variable = funcion.match(/sqrt\((.)\)/)[1];
+			funcion = funcion.replace('sqrt(' + variable + ')', sqrt);
+		}
+		return eval(funcion);
 	}
 
 	function getById(id) {
