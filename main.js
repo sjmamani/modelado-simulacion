@@ -36,12 +36,11 @@
 
 	// MONTECARLO
 	function calcularMontecarlo() {
-		var montecarloFunction =
-			getById('funcion_montecarlo').value;
+		var montecarloFunction = getById('funcion_montecarlo').value;
 		var puntoInicial = getById('punto_inicial').value;
 		var puntoFinal = getById('punto_final').value;
 		var disparos = getById('disparos').value;
-		const { puntos, area } = montecarlo(
+		const { puntos, area, yAxis } = montecarlo(
 			puntoInicial,
 			puntoFinal,
 			montecarloFunction,
@@ -73,7 +72,7 @@
 		const options = {
 			target: '#montecarloGraphic',
 			xAxis: { domain: [puntoInicial, puntoFinal] },
-			yAxis: { domain: [-1, 9] },
+			yAxis: { domain: [yAxis.min, yAxis.max] },
 			grid: true,
 			data: [otherData, processedAreaFunctions, ...proccessedPoints],
 		};
@@ -135,7 +134,7 @@
 
 		const area = pasoMontecarlo(exitos, intentos, xI, xF, y);
 
-		return { puntos: puntos, area: area };
+		return { puntos: puntos, area: area, yAxis: y };
 	};
 
 	// Calcula el Area por los Exitos
