@@ -319,6 +319,12 @@
 			let variable = funcion.match(/cos\((.)\)/)[1];
 			funcion = funcion.replace('cos(' + variable + ')', cos);
 		}
+		while (funcion.includes('tan')) {
+			let tan =
+				funcion.match(/tan\((.)\)/)[1] === 'x' ? Math.tan(x) : Math.tan(y);
+			let variable = funcion.match(/tan\((.)\)/)[1];
+			funcion = funcion.replace('tan(' + variable + ')', tan);
+		}
 		while (funcion.includes('sqrt')) {
 			let sqrt =
 				funcion.match(/sqrt\((.)\)/)[1] === 'x' ? Math.sqrt(x) : Math.sqrt(y);
