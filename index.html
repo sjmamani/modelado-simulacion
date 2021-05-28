@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Function Plot -->
     <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
     <!-- Math.js file -->
@@ -20,7 +22,7 @@
     <div class="container">
         <h3 class="center-align">Modelado y Simulación</h3>
         <div class="divider"></div>
-        <p>Seleccione un método:</p>
+        <p style="font-size: large;">Seleccione un método:</p>
         <!-- De acuerdo a lo que se elija ocultamos o mostramos el formulario -->
         <form class="row" name="methods">
             <div class="col s3">
@@ -42,7 +44,7 @@
             <div class="col s6">
                 <div class="input-field">
                     <input id="funcion_euler" type="text" class="validate" value="x^2">
-                    <label for="funcion_euler">Función</label>
+                    <label for="funcion_euler">Función (y, x)</label>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
@@ -67,7 +69,6 @@
             </div>
 
             <div id="eulerGraphic" class="col s6">
-                <!-- Aquí iría el gráfico -->
             </div>
         </div>
 
@@ -77,7 +78,7 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <input id="funcion_montecarlo" type="text" class="validate" value="3x^2">
-                        <label for="funcion_montecarlo">Función</label>
+                        <label for="funcion_montecarlo">Función - f(x)</label>
                     </div>
                     <div class="input-field col s6">
                         <input id="disparos" type="number" class="validate" value="10">
@@ -86,25 +87,25 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="punto_inicial" type="number" class="validate" value="0">
+                        <input id="punto_inicial" type="number" class="validate" value="0" step="0.01">
                         <label for="punto_inicial">A</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="punto_final" type="number" class="validate" value="1">
+                        <input id="punto_final" type="number" class="validate" value="1" step="0.01">
                         <label for="punto_final">B</label>
                     </div>
                 </div>
                 <div class="row">
-                    <p id="resultadoMontecarlo"></p>
+                    <p id="resultadoMontecarlo" style="font-size: x-large;"></p>
                 </div>
             </div>
 
             <div id="montecarloGraphic" class="col s6">
-                <!-- Aquí iría el gráfico -->
             </div>
         </div>
-
-        <button id="calculate" class="waves-effect waves-light btn">Calcular</button>
+        
+        <button id="calculate" class="waves-effect waves-light btn-large"><i
+                class="material-icons right">send</i>Calcular</button>
     </div>
     <script type="text/javascript" src="main.js"></script>
 </body>
